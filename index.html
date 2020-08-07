@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.ico">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link href="https://unpkg.com/animate.css@3.5.2/animate.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+
+
+
+</head>
+
+
+<!-- BUGs -->
+<!-- 
+    1/ Form đăng nhập yêu cầu có hình ảnh mới cho tạo mới mặc dù đó không phải là required 
+    2/ them san pham vo khong co duoc ID rieng -> FIX: Id: math.random()
+    3/ khi xoá item thì giỏ hàng vẫn còn hàng đã bị xoá ở trỏng 
+-->
+
+<body>
+
+
+    
+
+
+    <div id="app">
+
+        <div class="container-fluid p-0 ">
+            <!-- Nav -->
+            <div class class="row ">
+                <nav class="navbar " id="navbar">
+                    <div class='d-flex align-items-center' style="flex: 0 0 800px">
+                        <a href="#">
+                            <img src="./img/e2.png" id="imgBrand">
+                        </a>
+                        <input class="form-control ml-2" v-model="search" type="search" placeholder="Search"
+                            aria-label="Search">
+                    </div>
+
+                    <div class='d-flex '>
+                        <button type="button " class="btn text-white " data-toggle="modal" data-target="#myCart">
+                            <i class="fas fa-address-card  mr-2"></i> Shopping Card
+                            <span class="pop" :class="{'bounceIn animated': animated}" @animationend="animated = false">
+                                {{yourItemNumber}} </span>
+                        </button>
+                        <helloworld v-on:childevent="parentFunc"></helloworld>
+                    </div>
+                </nav>
+            </div>
+
+
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="card-197713">
+                            <div class="card">
+                                <div class="">
+                                    <a class="card-link btn btn-light btn-lg" data-toggle="collapse"
+                                        data-parent="#card-197713" href="#card-element-352257">Thông tin chi tiết</a>
+                                </div>
+                                <div id="card-element-352257" class="collapse ">
+                                    <div class="">
+                                        <!-- Intro -->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="jumbotron bg-light ">
+                                                    <h2 class="bg-primary p-4  text-white font-weight-bold mb-3 ">
+                                                        Internship Program 2020
+                                                    </h2>
+                                                    <p>
+                                                        At MeU Solutions, This is a required exercise to review the
+                                                        level of Front-end web
+                                                        development with tools and
+                                                        techniques for JavaScript Programming with VueJS framwork,
+                                                        in addition to the background
+                                                        skills of HTML, CSS in combining Bootrap from the web site
+                                                        development team, specially
+                                                        supervised by the main instructor Van Luyen </p>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h4 class="border border-left p-4">
+                                                    Requires & Techniques
+                                                </h4>
+                                                <div class="tabbable" id="tabs-914978">
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active" href="#tab1"
+                                                                data-toggle="tab">Requires</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#tab2"
+                                                                data-toggle="tab">Techniques</a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="tab-content mt-4 ">
+                                                        <div class="tab-pane active " id="tab1">
+                                                            <ul>
+                                                                <span class="badge badge-danger p-2 mb-2">Yêu cầu 1
+                                                                    trang show danh sách sản
+                                                                    phẩm</span>
+                                                                <li>1 nút thêm sản phẩm gọi modal (modal là 1
+                                                                    component)</li>
+                                                                <li>1 nút thêm vào giỏ hàng thì cập nhật số lượng
+                                                                    sản phẩm lên trên giỏ hàng
+                                                                </li>
+                                                                <li>bấm vào giỏ hàng show tất cả sản phẩm đã add
+                                                                    (yêu cầu realtime ko load lại
+                                                                    page)</li>
+                                                                <span class="badge badge-success p-2 mt-3 mb-2">Mở
+                                                                    rộng ý tưởng từ bản
+                                                                    thân</span>
+                                                                <li>Xoá sản phẩm đang có trên màn hình</li>
+                                                                <li>Điều chỉnh tăng,giảm hoặc xoá lượng sản phẩm đã
+                                                                    thêm vào giỏ hàng</li>
+                                                                <li>Tính tổng tiền sản phẩm đã được thêm vào giỏ
+                                                                    hàng</li>
+                                                                <li>Xác minh điệu kiện để thêm sản phẩm mới</li>
+                                                                <li>Tìm sản phẩm đang có theo tên</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="tab-pane" id="tab2">
+                                                            <ul>
+                                                                <span class="badge badge-danger p-2 mb-2">HTML</span>
+                                                                <li>phối hợp các thẻ html cơ bản</li>
+                                                                <li>Sự dụng các Class, ID </li>
+                                                                <li>Sử dụng Form (input, label, for, name ...)</li>
+                                                                <span
+                                                                    class="badge badge-primary p-2 mt-3 mb-2">CSS</span>
+                                                                <li>Sự dụng Bootrap thay thế</li>
+                                                                <li>Điều chỉnh mẫu theo kiểu Internal-Style</li>
+                                                                <span class="badge badge-success p-2 mt-3 mb-2">Vue
+                                                                    JS</span>
+                                                                <li>Sử dụng V-for, V-bind, V-if ...</li>
+                                                                <li>Sử dụng components</li>
+                                                                <li>Emit sự kiện, dữ liệu từ con vào cha</li>
+                                                                <li>Props dữ liệu từ cha vào con</li>
+                                                                <li>transition trong VueJS</li>
+                                                                <li>Function & Computed</li>
+                                                                <li>Làm việc với ES6 JavaScript (Đặc biệt Arrow
+                                                                    funtion, this)</li>
+                                                                <li>Làm việc với Array và Object</li>
+                                                                <li>Lam việc với một số hàm trong Array (splice,
+                                                                    unshift, push, filter, some,
+                                                                    ...)</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End info -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APP -- ITEMS List -->
+            <div class="container-fluid mt-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <transition-group class="row" name="list-complete">
+                            <div class="col-md-4 mb-4 list-complete-item" v-for="(item, index) in filteredList"
+                                :key="item.id">
+                                <div class="card product">
+                                    <img class="card-img-top" :src="item.srcimg" :alt="item.title ">
+                                    <div class="card-body">
+                                        <h4 class="card-title">{{item.title}}</h4>
+                                        <p class="card-text">{{ item.subtitle }} </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h5> {{ priceFormat(item.price) }}</h5>
+                                            <div>
+                                                <a href="#!" class="btn btn-success"
+                                                    v-on:click="addToCardfunc(index)">Add to
+                                                    Shop card</a>
+                                                <a href="#!" class="btn btn-warning"
+                                                    v-on:click="removeFromCardfunc(index)">
+                                                    Remove</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </transition-group>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APP -- SHOPPING CART -->
+            <div class="container">
+                <!-- Modal -->
+                <div class="modal fade" id="myCart" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content mt-5">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Your Shopping Cart</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body ">
+                                <div class="list-group">
+                                    <div class="list-group-item d-flex justify-content-between align-items-center"
+                                        v-for="(cart, ind) in yourCart" :key="cart.id" v-if="yourCart.length > 0">
+                                        <div>
+                                            <button type="button" class="btn btn-outline-danger btn-sm mr-2"
+                                                @click="cartRemove(ind)">x</button>
+                                            {{ cart.obj.title}}
+                                        </div>
+                                        <div>
+                                            <span class="btn font-weight-bold text-success">
+                                                {{ priceFormat(cart.obj.price)}} x {{ cart.quantity}}</span>
+                                            <div class="btn-group dropup">
+                                                <button type="button" @click="cartUp(ind)"
+                                                    class="btn btn-light dropdown-toggle dropdown-toggle-split"></button>
+                                                </button>
+                                            </div>
+                                            <div class="btn-group dropdown">
+                                                <button type="button" @click="cartDown(ind)"
+                                                    class="btn btn-light dropdown-toggle dropdown-toggle-split"></button>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-if="yourCart.length == 0 || yourCart == undefined">
+                                    <h4 class="text-center bg-light p-3">
+                                        Sorry, no items were found
+                                    </h4>
+                                    <h6 class="text-center"> please add some items</h6>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <p>Total: </p>
+                                <h2 class="text-danger font-weight-bold"> {{ priceFormat(yourCartTotalComputed) }} </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // When the user scrolls down 20px from the top of the document, slide down the navbar
+            window.onscroll = function () { scrollFunction() };
+
+            function scrollFunction() {
+
+                if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 00) {
+                    document.getElementById("navbar").style.padding = "10px 0px";
+                    document.getElementById("navbar").style.position = "fixed";
+                    document.getElementById("navbar").style.background = "rgb(9, 17, 103)";
+                    document.getElementById("imgBrand").style.width = "170px";
+                }
+                else {
+                    document.getElementById("navbar").style.background = "#00112d";
+                    document.getElementById("navbar").style.position = "relative";
+                    document.getElementById("navbar").style.padding = "20px 0px";
+                    document.getElementById("imgBrand").style.width = "260px";
+
+
+                }
+            }
+        </script>
+
+</body>
+
+<!-- ====================================== CHILD component ============================================== -->
+
+
+<!-- CHILD -- ADD MORE ITEM -->
+<script type="text/x-template" id="ModalChild">
+<div>
+    <div class="container " >
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Add more item</button>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+            
+            <!-- Modal content-->
+            <div class="modal-content ">
+                <div class="modal-header">
+                <h4 class="modal-title">Add some item into the list</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                
+                </div>
+                <div class="modal-body">
+                    
+                    <form @submit.submit.prevent="childfunc()" >
+                        
+                        <div class="form-group ">
+                            <label class="required font-weight-bold">Your Product Title</label>
+                            <input v-model="title" 
+                            class="form-control "
+                            :class="titleClassCheck()"
+                            @change="checkInputTitle()"   placeholder="Enter your title">
+                            <div class="valid-feedback position-absolute" >
+                                Wow, Nice title!
+                            </div>
+                            <div class="invalid-feedback position-absolute">
+                                {{titleErrorAnnounce}}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="required  font-weight-bold">Product Price</label>
+                            <input v-model="price" type="number"  
+                            :class="priceClassCheck()" @change="checkInputPrice()" class="form-control"  placeholder="Enter Price">
+                            <div class="valid-feedback position-absolute" >
+                                yay, Look great!
+                            </div>
+                            <div class="invalid-feedback position-absolute">
+                                {{priceErrorAnnounce}}
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class=" font-weight-bold">Your Subtitle:</label>
+                            <input v-model="subtitle"type="text" 
+                            class="form-control"
+                            :class="subtitleClassCheck()"
+                            placeholder="Enter subtitle">
+                            <div class="valid-feedback position-absolute" >
+                                Awesome description!
+                            </div>
+                        </div>
+                        
+                        <!-- <label >Select Image:</label> -->
+                        <!-- <div class="input-group">
+                            <input class="custom-file-input" @change="uploadFile()"  type="file" id="fileId" >
+                            <label class="custom-file-label" for="fileId">Choose file...</label>
+                        </div> -->
+                        <input ref="changethis" style="display:none" type="file" @change="uploadFile()" >
+                        <button class="btn btn-block btn-lg bg-dark text-white " @click="haddleClickUploadImg()" :class="{'uploadedImg': file}"> Upload Image </button>
+                        <input type="submit" value="Add new product" class="btn btn-success btn-lg float-right mt-5">
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+</div>
+</div>
+    </div>
+</script>
+
+<script src="child.js"></script>
+<!-- ====================================== End CHILD component ============================================== -->
+
+<script src="parent.js"></script>
+
+
+</html>

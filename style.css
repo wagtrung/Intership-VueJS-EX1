@@ -1,0 +1,97 @@
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .product {
+        cursor: pointer;
+        box-shadow: 0px 9px 25px 2px rgb(185, 213, 238), 1px 9px 61px 4px rgba(46, 110, 228, 0.233);
+        transition: .5s;
+        min-height: 100%;
+    }
+
+    .product:hover {
+        transform: scale(.97);
+        box-shadow: 0px 4px 5px 0 rgb(212, 231, 247), 1px 6px 31px 0 rgba(56, 125, 255, .1);
+    }
+
+    .card-img-top {
+        height: 240px;
+        object-fit: cover;
+    }
+
+    .pop {
+        display: inline-block;
+        padding: 5px;
+        border: 2px solid #fff;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 20px;
+        min-width: 40px;
+        margin-left: 6px;
+    }
+
+    .modal-header {
+        background: #28a745;
+        color: #fff;
+    }
+
+    .required:after {
+        content: " *";
+        color: red;
+    }
+
+    .form-group {
+        min-height: 85px;
+    }
+
+    .modal-header .close {
+        font-size: 35px;
+    }
+
+    .uploadedImg {
+        background: green
+    }
+
+    @media (min-width: 576px) {
+        .modal-dialog {
+            max-width: 647px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .modal-dialog {
+            max-width: 500px;
+        }
+    }
+
+    #navbar {
+        background: rgb(39, 39, 39);
+        width: 100%;
+        transition: 0.4s;
+        position: relative;
+        z-index: 1041;
+        top: 0
+    }
+
+    #imgBrand {
+        transition: 0.6s;
+        width: 250px
+    }
+
+
+    .list-complete-item {
+        transition: all 0.4s;
+    }
+
+    .list-complete-enter,
+    .list-complete-leave-to {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+
+    .list-complete-leave-active {
+        position: absolute;
+    }
+
