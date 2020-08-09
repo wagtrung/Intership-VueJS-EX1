@@ -149,9 +149,9 @@
 
         
     }
-      .modal{
-          height: auto;
-      }
+    .modal{
+        height: auto;
+    }
     
       .full{
           width: 100 vw;
@@ -162,10 +162,5 @@
         url("https://www.transparenttextures.com/patterns/subtle-dots.png") repeat,
         linear-gradient(to bottom, #199ad64b 10%, #04001bb4 90% ),
         url("https://images.pexels.com/photos/2387793/pexels-photo-2387793.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-      
 
-        
-     
-      
-    
       }
