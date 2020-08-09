@@ -1,6 +1,7 @@
 
     body {
         font-family: Arial, Helvetica, sans-serif;
+        scroll-behavior: smooth;
     }
 
     .product {
@@ -65,7 +66,7 @@
             max-width: 500px;
         }
     }
-
+/* 
     #navbar {
         background: rgb(39, 39, 39);
         width: 100%;
@@ -73,11 +74,11 @@
         position: relative;
         z-index: 1041;
         top: 0
-    }
+    } */
 
     #imgBrand {
         transition: 0.6s;
-        width: 250px
+        width: 200px
     }
 
 
@@ -95,3 +96,76 @@
         position: absolute;
     }
 
+    .smart-scroll{
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1050;
+        
+        /* background: rgb(7, 7, 43); */
+      }
+      .normal{
+          padding: 30px 30px;
+        transform:translateY(0);
+        transition: all 0.3s ease-out;
+
+      }
+      .normal .kk{
+        transform:scaleX(0);
+        transition: all 0.1s ease-out;
+        transform-origin: 0%;
+
+    }
+      .scrolled-down{
+          /* opacity: 0; */
+         /* transform:translateY(-100%); */
+         /* background:rgb(212, 212, 212); */
+        transition: all 0.3s ease-out;
+        /* padding: 0 40px 0; */
+          
+      }
+      .scrolled-down .kk{
+        
+        transform:scaleX(1);
+        transition: all 0.1s ease-out;
+        transform-origin: 0%;
+
+        
+    }
+    
+      .scrolled-up{
+        padding:  10px 20px;
+
+         transform:translateY(0);
+          transition: all 0.5s ease-in;
+        background: rgb(7, 7, 43);
+    
+      }
+      .scrolled-up .kk{
+        transform:scaleX(1);
+        transition: all 0.5s ease-out .7s;
+        transform-origin: 0%;
+
+        
+    }
+      .modal{
+          height: auto;
+      }
+    
+      .full{
+          width: 100 vw;
+          height: 100vh;
+      }
+      .xxx{
+        background: 
+        url("https://www.transparenttextures.com/patterns/subtle-dots.png") repeat,
+        linear-gradient(to bottom, #199ad64b 10%, #04001bb4 90% ),
+        url("https://images.pexels.com/photos/2387793/pexels-photo-2387793.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+      
+
+        
+     
+      
+    
+      }

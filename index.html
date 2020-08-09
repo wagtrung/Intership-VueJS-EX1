@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WagShop</title>
     <link rel="shortcut icon" type="image/png" href="img/favicon.ico">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -23,7 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    
+
 
 
 
@@ -40,20 +41,36 @@
 <body>
 
 
-    
+    <div class=" xxx full d-flex ">
+
+        <main class=" container m-auto text-center col-5">
+            <h1 class=" text-white">Tell me your Stories</h1>
+            <p class="  text-light">Cover is a one-page template for building simple and beautiful home pages. Download,
+                edit the text</p>
+            <a href="#" class="btn btn-lg btn-success">Shop Now</a>
+
+        </main>
+
+    </div>
 
 
     <div id="app">
 
-        <div class="container-fluid p-0 ">
+
+
+
+
+
+
+        <div class="container p-0 ">
             <!-- Nav -->
             <div class class="row ">
-                <nav class="navbar " id="navbar">
+                <nav class="navbar smart-scroll">
                     <div class='d-flex align-items-center' style="flex: 0 0 800px">
                         <a href="#">
                             <img src="./img/e2.png" id="imgBrand">
                         </a>
-                        <input class="form-control ml-2" v-model="search" type="search" placeholder="Search"
+                        <input class="form-control ml-2 kk rounded-0" v-model="search" type="search" placeholder="Search"
                             aria-label="Search">
                     </div>
 
@@ -63,6 +80,7 @@
                             <span class="pop" :class="{'bounceIn animated': animated}" @animationend="animated = false">
                                 {{yourItemNumber}} </span>
                         </button>
+
                         <helloworld v-on:childevent="parentFunc"></helloworld>
                     </div>
                 </nav>
@@ -192,16 +210,29 @@
                                     <div class="card-body">
                                         <h4 class="card-title">{{item.title}}</h4>
                                         <p class="card-text">{{ item.subtitle }} </p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h5> {{ priceFormat(item.price) }}</h5>
-                                            <div>
-                                                <a href="#!" class="btn btn-success"
-                                                    v-on:click="addToCardfunc(index)">Add to
-                                                    Shop card</a>
-                                                <a href="#!" class="btn btn-warning"
-                                                    v-on:click="removeFromCardfunc(index)">
-                                                    Remove</a>
-                                            </div>
+                                        <h5> {{ priceFormat(item.price) }}</h5>
+                                        <div class="d-flex justify-content-end">
+                                            <a href="#!" class="btn btn-outline-dark rounded-0"
+                                                v-on:click="removeFromCardfunc(index)">
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-x"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                                                </svg>
+
+
+                                            </a>
+                                            <a href="#!" class="btn btn-success rounded-0 "
+                                                v-on:click="addToCardfunc(index)">
+                                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z" />
+                                                </svg></a>
                                         </div>
                                     </div>
                                 </div>
@@ -264,7 +295,7 @@
             </div>
         </div>
 
-        <script>
+        <!-- <script>
             // When the user scrolls down 20px from the top of the document, slide down the navbar
             window.onscroll = function () { scrollFunction() };
 
@@ -285,8 +316,40 @@
 
                 }
             }
-        </script>
+        </script> -->
 
+        <script>
+            // $('body').css('padding-top', $('.navbar').outerHeight() + 'px')
+            // detect scroll top or down
+            if ($('.smart-scroll').length >= 0) { // check if element exists
+                // var last_scroll_top = 0;
+                // var check = false;
+                $(window).on('scroll', function () {
+                    scroll_top = $(this).scrollTop();
+
+                    // if (check) {
+                    //     $('.smart-scroll').addClass('scrolled-up').removeClass('scrolled-down');
+                    //     if (scroll_top < 3) {
+                    //         check = false;
+                    //     }
+                    // }
+                    if (scroll_top < 3) {
+                        
+                        $('.smart-scroll').removeClass('scrolled-up').addClass('normal');
+                    }
+                    else if (scroll_top >= 10 && scroll_top < 200) {
+                        $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
+                        // if (scroll_top == 100) check = true;
+                    }
+
+                    else {
+                        $('.smart-scroll').addClass('scrolled-up').removeClass('scrolled-down');
+                    }
+
+                    // last_scroll_top = scroll_top;
+                });
+            }
+        </script>
 </body>
 
 <!-- ====================================== CHILD component ============================================== -->
