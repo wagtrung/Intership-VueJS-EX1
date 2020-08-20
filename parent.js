@@ -101,14 +101,16 @@
                 }
             },
             removeFromCardfunc(index) {
+                var check = confirm("Are you sure to REMOVE this product FOREVER")
+                if (check){
                 this.yourCart.forEach((item, ind) => {
                     if (this.items[index].id == item.obj.id) {
                         this.yourItemNumber -= item.quantity
                         this.yourCart.splice(ind, 1)
-                        // console.log("ok")
+                        
                     }
                 })
-                this.items.splice(index, 1)
+                this.items.splice(index, 1)}
             },
             priceFormat(pri) {
                 return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(pri);

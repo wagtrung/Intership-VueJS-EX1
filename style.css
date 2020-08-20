@@ -1,36 +1,83 @@
 
+    html {
+        scroll-behavior: smooth;
+      }
     body {
         font-family: Arial, Helvetica, sans-serif;
-        scroll-behavior: smooth;
+       
     }
-
+    #app{
+        margin-top:10%;
+        
+    }
     .product {
+        
+        overflow: hidden;
         cursor: pointer;
-        box-shadow: 0px 9px 25px 2px rgb(185, 213, 238), 1px 9px 61px 4px rgba(46, 110, 228, 0.233);
+        /* box-shadow: 0px 9px 25px 2px rgb(185, 213, 238), 1px 9px 61px 4px rgba(46, 110, 228, 0.233); */
         transition: .5s;
         min-height: 100%;
+        
     }
 
-    .product:hover {
-        transform: scale(.97);
+    /* .product:hover {
+        transform: scale(1.07);
         box-shadow: 0px 4px 5px 0 rgb(212, 231, 247), 1px 6px 31px 0 rgba(56, 125, 255, .1);
+    } */
+    .product:hover .actionbtn {
+        right: 0;
+    }
+    .product:hover .card-img-top {
+        transform:scale(1.3);
+        filter:  brightness(0.40);
     }
 
+    .flowhidden{
+        height: 100%;
+        overflow: hidden;
+    }
     .card-img-top {
         height: 240px;
+        transition: transform 1s , filter .5s;
         object-fit: cover;
     }
 
-    .pop {
+    .pop {position: absolute;
+        right: -16px;
+        top: -2px;
+        background: #f10000e0;
+        border-radius: 50%;
         display: inline-block;
-        padding: 5px;
-        border: 2px solid #fff;
         color: #ffffff;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 16px;
         line-height: 20px;
-        min-width: 40px;
-        margin-left: 6px;
+        min-width: 24px;
+        padding: 2px;
+    }
+    .card{
+        
+        border:none;
+    }
+    .card-title{
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+    }
+    .card-body{
+        padding: 10px 0 0;
+        position: relative;
+    }
+    .actionbtn{
+        transition: .4s;
+        padding: 10px;
+    background: white;
+    margin: -54px 0px;
+    position: absolute;
+    right: -100%;
+    /* left: 0; */
+    top: 0;
     }
 
     .modal-header {
@@ -117,14 +164,14 @@
         transform-origin: 0%;
 
     }
-      .scrolled-down{
+      /* .scrolled-down{
           /* opacity: 0; */
          /* transform:translateY(-100%); */
          /* background:rgb(212, 212, 212); */
-        transition: all 0.3s ease-out;
+        /* transition: all 0.3s ease-out; */
         /* padding: 0 40px 0; */
           
-      }
+      /* }
       .scrolled-down .kk{
         
         transform:scaleX(1);
@@ -132,7 +179,7 @@
         transform-origin: 0%;
 
         
-    }
+    } */ 
     
       .scrolled-up{
         padding:  10px 20px;
@@ -157,10 +204,38 @@
           width: 100 vw;
           height: 100vh;
       }
-      .xxx{
-        background: 
-        url("https://www.transparenttextures.com/patterns/subtle-dots.png") repeat,
-        linear-gradient(to bottom, #199ad64b 10%, #04001bb4 90% ),
-        url("https://images.pexels.com/photos/2387793/pexels-photo-2387793.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-
+      .carousel-indicators{
+        bottom: 100px
       }
+      .xxx{
+        position: absolute;  
+        background: url(https://www.transparenttextures.com/patterns/subtle-dots.png) repeat, 
+        linear-gradient(180deg, rgba(0, 0, 7, 0.753) 11%, rgba(0, 0, 0, 0.247) 100%);
+        background-attachment: fixed;
+        top: 0;
+        right:0;
+        left: 0;
+        bottom: 0;
+    }
+    .onTopCarousel{
+        position: absolute;
+    top: 30%;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .infoTab{
+    position: absolute;
+    top: 94%;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    }
+    .inforTitle{
+        background:rgb(255, 255, 255);
+        box-shadow: 5px 2px 30px rgba(70, 70, 70, 0.24);
+        padding:20px
+    }

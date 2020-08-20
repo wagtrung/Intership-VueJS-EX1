@@ -34,11 +34,12 @@
                     this.errorVar.price = true
                     this.priceErrorAnnounce = 'Hey, Product Price must be larger than 0'
                 }
+            
                 if (this.price > 0 && this.title.length > 0) {
                     this.$emit('childevent', {
                         id: Math.random(),
                         title: this.title,
-                        subtitle: this.subtitle,
+                        subtitle: !this.subtitle ? "Empty subtitle" : this.subtitle ,
                         price: this.price,
                         srcimg: URL.createObjectURL(this.file)
                     })
@@ -96,6 +97,7 @@
             },
             subtitleClassCheck() {
                 if (this.subtitle.length > 8) { return { 'is-valid': true } }
+                
             },
             haddleClickUploadImg() {
                 this.$refs.changethis.click()
