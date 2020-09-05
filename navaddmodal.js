@@ -39,8 +39,10 @@
         
                                 <div class="form-group">
                                     <label class="required  font-weight-bold">Product Price</label>
-                                    <input v-model="price" type="number"  
-                                    :class="priceClassCheck()" @change="checkInputPrice()" class="form-control"  placeholder="Enter Price">
+                                    <h5> {{priceformat(price)}} </h5>
+                                        <input type="range" class="form-control-range slider" id="formControlRange" min="0"
+                                        max="5000000" step="50000" v-model="price" :class="priceClassCheck()" @change="checkInputPrice()">
+                                        
                                     <div class="valid-feedback position-absolute" >
                                         yay, Look great!
                                     </div>
@@ -125,9 +127,9 @@
                     this.errorVar.title = true
                     this.titleerrorannounce = 'Oh no, Product Title is required'
                 }
-                if (this.price == 0 || this.price < 0) {
+                if (this.price == 500000 || this.price < 500000) {
                     this.errorVar.price = true
-                    this.priceerrorannounce = 'Hey, Product Price must be larger than 0'
+                    this.priceerrorannounce = 'Hey, Product Price must be larger than 500.000'
                 }
             
                 if (this.price > 0 && this.title.length > 0) {
@@ -135,10 +137,11 @@
                         id: Math.random(),
                         title: this.title,
                         subtitle: !this.subtitle ? "Empty subtitle" : this.subtitle ,
-                        price: this.price,
+                        price: parseInt(this.price),
                         srcimg: URL.createObjectURL(this.file),
                         tags: this.tags
                     })
+                    this.tags=[]
                     this.title = ''
                     this.subtitle = ''
                     this.price = 0
@@ -160,7 +163,7 @@
                 }
             },
             checkInputPrice() {
-                if (this.price > 0) {
+                if (this.price > 500000) {
                     this.errorVar.price = false
                     this.validVar.price = true
                     this.priceerrorannounce = ''
@@ -169,7 +172,7 @@
                     this.errorVar.price = true
                     this.validVar.price = false
                     if (!this.priceerrorannounce.length) {
-                        this.priceerrorannounce = 'Price must be larger than 0'
+                        this.priceerrorannounce = 'Price must be larger than 500.000'
                     }
                 }
             },
@@ -202,6 +205,9 @@
                 if(this.tag){
                 this.tags.push(this.tag)
                 this.tag = null}
+            },
+            priceformat(pri) {
+                return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(pri);
             }
 
         },
